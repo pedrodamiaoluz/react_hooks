@@ -1,16 +1,22 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import { ThemeContext } from './components/context/ThemeContext'
+
 import './App.css'
 import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
-      <Navbar />
-      <Outlet />
+    <div className={`App ${theme === "dark" ? "dark-theme" : ""}`}>
+      <div className="containe">
+        <Navbar />
+        <Outlet />
+      </div>
+      </div>
     </>
   )
 }
